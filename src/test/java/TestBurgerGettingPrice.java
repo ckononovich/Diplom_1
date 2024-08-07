@@ -26,6 +26,7 @@ public class TestBurgerGettingPrice {
         burger.addIngredient(ingredients.get(1));
         burger.addIngredient(ingredients.get(4));
         float actualResult = burger.getPrice();
+        System.out.println(actualResult);
         assertEquals(600, actualResult, 2);
     }
 }

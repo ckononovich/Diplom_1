@@ -36,18 +36,21 @@ public class TestIngredientMethods {
     public void testGetPriceIngredient(){
         Ingredient ingredient =new Ingredient(type,name,price);
         float actualResult = ingredient.getPrice();
+        System.out.println(actualResult);
         assertEquals(ingredient.getPrice(), actualResult, 2);
     }
     @Test
     public void testGetNameIngredient(){
         Ingredient ingredient =new Ingredient(type,name,price);
         String actualResult = ingredient.getName();
+        System.out.println(actualResult);
         assertEquals(ingredient.getName(), actualResult);
     }
     @Test
     public void testGetTypeIngredient(){
         Ingredient ingredient =new Ingredient(type,name,price);
         IngredientType actualResult = ingredient.getType();
+        System.out.println(actualResult);
         assertEquals(ingredient.getType(), actualResult);
     }
 }

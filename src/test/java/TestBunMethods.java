@@ -17,7 +17,7 @@ public class TestBunMethods {
     }
 
     @Parameterized.Parameters
-    public static Object[][] getBunName() {
+    public static Object[][] getBunNameAndPrice() {
         return new Object[][]{
                 {"black bun", 100},
                 {"white bun", 200},

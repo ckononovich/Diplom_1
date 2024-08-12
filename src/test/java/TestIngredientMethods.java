@@ -15,11 +15,12 @@ public class TestIngredientMethods {
     private final String name;
     private final float price;
 
-    public TestIngredientMethods (IngredientType type, String name, float price){
-        this.type= type;
-        this.name=name;
-        this.price=price;
+    public TestIngredientMethods(IngredientType type, String name, float price) {
+        this.type = type;
+        this.name = name;
+        this.price = price;
     }
+
     @Parameterized.Parameters
     public static Object[][] getIngredientsData() {
         return new Object[][]{
@@ -33,22 +34,24 @@ public class TestIngredientMethods {
     }
 
     @Test
-    public void testGetPriceIngredient(){
-        Ingredient ingredient =new Ingredient(type,name,price);
+    public void testGetPriceIngredient() {
+        Ingredient ingredient = new Ingredient(type, name, price);
         float actualResult = ingredient.getPrice();
         System.out.println(actualResult);
         assertEquals(ingredient.getPrice(), actualResult, 2);
     }
+
     @Test
-    public void testGetNameIngredient(){
-        Ingredient ingredient =new Ingredient(type,name,price);
+    public void testGetNameIngredient() {
+        Ingredient ingredient = new Ingredient(type, name, price);
         String actualResult = ingredient.getName();
         System.out.println(actualResult);
         assertEquals(ingredient.getName(), actualResult);
     }
+
     @Test
-    public void testGetTypeIngredient(){
-        Ingredient ingredient =new Ingredient(type,name,price);
+    public void testGetTypeIngredient() {
+        Ingredient ingredient = new Ingredient(type, name, price);
         IngredientType actualResult = ingredient.getType();
         System.out.println(actualResult);
         assertEquals(ingredient.getType(), actualResult);

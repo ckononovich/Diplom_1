@@ -1,37 +1,41 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Spy;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Database;
 import praktikum.Ingredient;
 
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestBurgerGettingReceipt {
 
-    @Spy
-    Burger burger;
+    @Mock
+    Ingredient ingredients;
+
+    @Mock
+    Ingredient ingredientOneMore;
+
+    @Mock
+    Bun bun;
 
     @Test
     public void testGettingReceipt() {
+        Burger burger = new Burger();
         Database database = new Database();
-        List<Ingredient> ingredients = database.availableIngredients();
-        List<Bun> buns = database.availableBuns();
-        burger.setBuns(buns.get(0));
-        burger.addIngredient(ingredients.get(0));
-        burger.addIngredient(ingredients.get(1));
-        burger.addIngredient(ingredients.get(4));
-        burger.addIngredient(ingredients.get(5));
-        burger.moveIngredient(2, 1);
-        burger.removeIngredient(0);
+        Mockito.when(bun.getName()).thenReturn(String.format("(==== black bun ====)%n"));
+        Mockito.when(ingredients.getName()).thenReturn(String.format("= sauce hot sauce =%n"));
+        Mockito.when(ingredientOneMore.getName()).thenReturn(String.format("= sauce sour cream =%n"));
+        burger.setBuns(database.availableBuns().get(0));
+        burger.addIngredient(database.availableIngredients().get(0));
+        burger.addIngredient(database.availableIngredients().get(1));
         String actualResult = burger.getReceipt();
+        float price = burger.getPrice();
+        String expectedResult = bun.getName() + ingredients.getName() + ingredientOneMore.getName() + bun.getName() + String.format("%nPrice: %f%n", price);
         System.out.println(actualResult);
-        assertThat(actualResult, notNullValue());
+        assertEquals(expectedResult, actualResult);
     }
 }
